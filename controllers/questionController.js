@@ -59,7 +59,7 @@ exports.createQuestion = catchAsync(async (req, res, next) => {
 });
 
 exports.updateQuestion = catchAsync(async (req, res, next) => {
-    const question = await Quiz.findByIdAndUpdate(req.params.id, req.body, {
+    const question = await Question.findByIdAndUpdate(req.params.id, req.body, {
         new: true, // Orjinali yerine güncellenmiş halini geri döndürür.
         runValidators: true,
     });
