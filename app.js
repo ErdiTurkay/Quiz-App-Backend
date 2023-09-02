@@ -4,6 +4,8 @@ const morgan = require('morgan');
 const AppError = require('./utils/AppError');
 const globalErrorHandler = require('./controllers/errorController');
 const userRouter = require('./routes/userRoutes');
+const quizRouter = require('./routes/quizRoutes')
+const questionRouter = require('./routes/questionRoutes')
 
 const app = express();
 
@@ -23,6 +25,8 @@ app.use((req, res, next) => {
 
 // 3) ROUTES
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/quizzes', quizRouter);
+app.use('/api/v1/questions', questionRouter);
 
 app.all('*', (req, res, next) => {
     const err = new AppError(
